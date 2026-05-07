@@ -143,12 +143,31 @@ class Fighter extends Enemy{
         for(let i=0; i<this.bulletSpreadCount; i++){
             let angle = initAngle + i * spreadRad;
             let bullet = this.spawnBullet(enemyBulletGroup, worldX, worldY);
-            if(bullet){
-                bullet.useVelocity = true;
-                bullet.velocityX = Math.cos(angle) * this.shotSpeed;
-                bullet.velocityY = Math.sin(angle) * this.shotSpeed;
-                bullet.rotation = angle - Math.PI / 2;
-            }
+            if(!bullet) continue;
+
+            bullet.useVelocity = true;
+            bullet.velocityX = Math.cos(angle) * this.shotSpeed;
+            bullet.velocityY = Math.sin(angle) * this.shotSpeed;
+            bullet.rotation = angle - Math.PI / 2;
+
+            const b = bullet;
+            let vX = bullet.velocityX;
+            let vY = bullet.velocityY;
+            let endvX = vX * 2.0;
+            let endvY = vY * 2.0;
+            let t = {progress: 0};
+
+            this.scene.tweens.add({
+                targets: t,
+                progress: 1,
+                duration: 2000,
+                ease: 'Sine.easeIn',
+                onUpdate: () => {
+                    if(!b.active) return;
+                    b.velocityX = Phaser.Math.Linear(vX, endvX, t.progress);
+                    b.velocityY = Phaser.Math.Linear(vY, endvY, t.progress);
+                }
+            });
         }
     }
 

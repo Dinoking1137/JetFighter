@@ -10,7 +10,7 @@ class ArrayBoom extends Phaser.Scene {
 
         this.enemies = [];
         this.enemyWaveCount = 0;
-        this.wave = 1;
+        this.wave = game.config.startWave;
 
         //startX, startY, enemyNum
         this.levelObjectArr = [
@@ -48,6 +48,41 @@ class ArrayBoom extends Phaser.Scene {
                 bomber: [0, 92, 1],
                 twinShooter: [64, 184, 4], 
                 support: [128, 230, 7],
+            },
+            {
+                level: "Level 6",
+                fighter: [128, 184, 3],
+                bomber: [64, 138, 5],
+                twinShooter: [0, 92, 1], 
+                support: [128, 230, 12],
+            },
+            {
+                level: "Level 7",
+                fighter: [128, 230, 5],
+                bomber: [64, 92, 1],
+                twinShooter: [128, 92, 3], 
+                support: [0, 0, 0],
+            },
+            {
+                level: "Level 8",
+                fighter: [0, 0, 0],
+                bomber: [128, 92, 7],
+                twinShooter: [128, 230, 5], 
+                support: [0, 0, 0],
+            },
+            {
+                level: "Level 9",
+                fighter: [0, 0, 0],
+                bomber: [128, 92, 7],
+                twinShooter: [0, 0, 0], 
+                support: [0, 322, 21],
+            },
+            {
+                level: "Level 10",
+                fighter: [64, 138, 9],
+                bomber: [64, 92, 7],
+                twinShooter: [128, 230, 3], 
+                support: [0, 322, 15],
             },
         ];
         this.showHitboxes = false;
@@ -610,7 +645,7 @@ class ArrayBoom extends Phaser.Scene {
         this.enemies = [];
 
         this.enemyWaveCount = 0;
-        this.wave = 1;
+        this.wave = game.config.startWave;
 
     }
 

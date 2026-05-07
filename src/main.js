@@ -29,3 +29,4 @@ let config = {
 const game = new Phaser.Game(config);
 
 game.config.score = 0;
+game.config.startWave = 1;
