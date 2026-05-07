@@ -18,7 +18,7 @@ class Player extends Phaser.GameObjects.Sprite {
         scene.add.existing(this);
 
         //this.hitbox = new Collisionbox(scene, this, 20, 30, showHitboxes);
-        this.hitbox = new CollisionBox(scene, this, 20, 30, showHitboxes);
+        this.hitbox = new Collisionbox(scene, this, 20, 30, showHitboxes);
         return this;
     }
 
